@@ -36,11 +36,12 @@ LPIC is a **local authorization library** that embeds into your application.
 ### 2️⃣ Policy-Based Authorization
 
 Policies support:
+
 - **Subject**: Identity ID or role (supports wildcards)
 - **Resource**: Resource identifier (supports wildcards like `files/*`)
 - **Action**: read, write, execute, delete, admin
 - **Decision**: ALLOW, DENY, REQUIRE_REVIEW
-- **Conditions**: 
+- **Conditions**:
   - Time windows
   - Device restrictions
   - Metadata requirements
@@ -307,6 +308,7 @@ pytest tests/ -v
 ```
 
 Tests verify:
+
 - ✅ Signature validation correctness
 - ✅ Policy denies by default
 - ✅ Deterministic decisions
@@ -327,27 +329,32 @@ engine = LPICEngine(db_path: str)
 ```
 
 **Identity Management:**
+
 - `register_identity(keypair, metadata=None) -> str`
 - `get_identity(identity_id) -> dict`
 - `list_identities() -> list[dict]`
 
 **Policy Management:**
+
 - `add_policy(subject, resource, action, decision, conditions=None) -> str`
 - `get_policy(policy_id) -> dict`
 - `list_policies() -> list[dict]`
 - `delete_policy(policy_id)`
 
 **Authorization:**
+
 - `authorize(request: SignedRequest) -> str`
 - `authorize_dict(request_dict) -> str`
 
 **Audit Log:**
+
 - `get_audit_entry(entry_id) -> dict`
 - `get_audit_log(identity_id=None, resource=None) -> list[dict]`
 - `verify_audit_integrity() -> bool`
 - `get_audit_summary() -> dict`
 
 **Utilities:**
+
 - `health_check() -> dict`
 - `close()`
 
@@ -361,6 +368,7 @@ keypair = Keypair.load_from_file(path)
 ```
 
 **Methods:**
+
 - `get_identity_id() -> str`
 - `get_public_bytes() -> bytes`
 - `get_private_bytes() -> bytes`
@@ -375,6 +383,7 @@ request = sign_request(keypair, resource, action, context)
 ```
 
 **Attributes:**
+
 - `identity_id: str`
 - `resource: str`
 - `action: str`
@@ -457,6 +466,7 @@ LPIC's security is achieved through multiple layers of defense:
 - **Offline-first**: No network dependencies
 
 These properties make LPIC suitable for:
+
 - Air-gapped environments
 - Safety-critical systems
 - Compliance-sensitive applications
@@ -464,10 +474,21 @@ These properties make LPIC suitable for:
 - Embedded systems
 - Security research
 
-## License
+## License & Enterprise Usage
 
-This is a reference implementation for educational and research purposes.
+This project is open-source for **personal, educational, and non-commercial use** under the MIT License.
 
-## Contributing
+### Enterprise & Commercial Use
+
+For enterprise or commercial deployments, a **nominal licensing fee** applies. This ensures sustainable development and priority support.
+
+Please contact **Shivay** (or create a GitHub issue) for enterprise licensing details. We offer:
+
+- Commercial-friendly license
+- Priority bug fixes
+- Custom feature development
+- Integration support
+
+### Contributing
 
 This is a standalone reference implementation. For production use, conduct thorough security review and testing for your specific use case.
