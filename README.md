@@ -1,5 +1,7 @@
 # LPIC - Local-First Identity & Policy Core
 
+Built by [VisionQuantech](https://visionquantech.com) — AI agents, apps & tools for small businesses.
+
 A zero-cloud, SQLite-backed identity + policy + audit engine that runs entirely locally.
 
 ## What is LPIC?
